@@ -1,0 +1,26 @@
+@import '../../scss/base.scss';
+
+.add-button {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: black;
+  color: #fff;
+  border-radius: $radius;
+  margin-right: 20px;
+
+  transition: 0.5s;
+  user-select: none;
+  cursor: pointer;
+
+  &:hover {
+    background: #fff;
+    color: black;
+  }
+
+  &__text {
+    font-size: $title;
+  }
+}

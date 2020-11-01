@@ -1,0 +1,29 @@
+{
+  "extends": "airbnb",
+  "plugins": ["react"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "linebreak-style": "off",
+    // Enforce tab width of 2 spaces.
+    "indent": "off",
+    // Enforce line length to 120 characters.
+    "max-len": ["error", { "code": 120 }],
+    "react/jsx-filename-extension": "off",
+    "no-undef": "off",
+    "no-unused-vars": "off",
+    // Force all variable names to use camelCase style.
+    "camelcase": "error",
+    "object-curly-newline": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "arrow-body-style": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "operator-linebreak": "off",
+    "react/jsx-wrap-multilines": "off",
+    "comma-dangle": "off"
+  }
+}
