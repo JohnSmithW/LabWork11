@@ -1,16 +1,10 @@
 import { combineReducers } from 'redux';
-
-function modalWindow(state = { isModalWindowOpen: false }, action) {
-  switch (action.type) {
-    case 'open':
-      return { isModalWindowOpen: action.isModalWindowOpen };
-    default:
-      return state;
-  }
-}
+import modalWindow from './modalWindow';
+import usersTable from './usersTable';
 
 const app = combineReducers({
   modalWindow,
+  usersTable,
 });
 
 export default app;

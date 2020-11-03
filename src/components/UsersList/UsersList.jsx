@@ -1,8 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './UsersList.scss';
 import User from '../User/User';
+import getUsers from '../../actions/getUsers';
 
-export default function UsersList() {
+function mapStateToProps(state) {
+  return {
+    users: state.usersTable.users,
+  };
+}
+
+const mapDispatchToProps = {
+  getUsers,
+};
+
+function UsersList({ users }) {
   return (
     <div className="users-list">
       <div className="title-block">
@@ -13,8 +25,12 @@ export default function UsersList() {
       </div>
 
       <div className="users">
-        <User name="John" email="john@gamil.com" rights="admin" status="active" />
+        {users.map((user) => {
+          return <User key={user.id} name={user.name} email={user.email} rights={user.rights} status={user.status} />;
+        })}
       </div>
     </div>
   );
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(UsersList);

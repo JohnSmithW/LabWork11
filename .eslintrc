@@ -24,6 +24,7 @@
     "react/jsx-closing-bracket-location": "off",
     "operator-linebreak": "off",
     "react/jsx-wrap-multilines": "off",
-    "comma-dangle": "off"
+    "comma-dangle": "off",
+    "object-shorthand": "off"
   }
 }

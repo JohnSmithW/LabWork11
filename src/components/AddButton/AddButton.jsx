@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './AddButton.scss';
-import toggleModalWindow from '../../actions/toggleModalWindow';
+import openModalWindow from '../../actions/openModalWindow';
 
 function mapDispatchToProps(dispatch) {
   return {
-    onClick: () => dispatch(toggleModalWindow),
+    onClick: () => dispatch(openModalWindow),
   };
 }
 
