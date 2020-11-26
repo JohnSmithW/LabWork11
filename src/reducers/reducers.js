@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import modalWindow from './modalWindow';
+import addUserModal from './addUserModal';
 import usersTable from './usersTable';
 
 const app = combineReducers({
-  modalWindow,
+  addUserModal,
   usersTable,
 });
 

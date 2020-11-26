@@ -12,6 +12,8 @@
   border-radius: $radius;
 
   &__item {
+    width: 25%;
     font-size: $regular;
+    text-align: center;
   }
 }

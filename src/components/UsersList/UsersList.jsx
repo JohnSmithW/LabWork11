@@ -1,20 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './UsersList.scss';
-import User from '../User/User';
-import getUsers from '../../actions/getUsers';
+import UserListItem from '../UserListItem/UserListItem';
+
+import getUsers from '../../selectors/getUsers';
 
 function mapStateToProps(state) {
   return {
-    users: state.usersTable.users,
+    users: getUsers(state),
   };
 }
 
-const mapDispatchToProps = {
-  getUsers,
-};
-
-function UsersList({ users }) {
+function UsersList({ users, onDoubleClick }) {
   return (
     <div className="users-list">
       <div className="title-block">
@@ -24,13 +21,25 @@ function UsersList({ users }) {
         <span className="title-block__item">Status:</span>
       </div>
 
-      <div className="users">
+      <div className="users custom-scroll">
         {users.map((user) => {
-          return <User key={user.id} name={user.name} email={user.email} rights={user.rights} status={user.status} />;
+          return (
+            <UserListItem
+              key={user.id}
+              name={user.name}
+              email={user.email}
+              rights={user.rights}
+              status={user.status}
+              id={user.id}
+              onDoubleClick={() => {
+                onDoubleClick();
+              }}
+            />
+          );
         })}
       </div>
     </div>
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersList);
+export default connect(mapStateToProps, null)(UsersList);

@@ -1,12 +1,11 @@
 import React from 'react';
 import './Header.scss';
-import AddButton from '../AddButton/AddButton';
 
-export default function Header() {
+export default function Header({ content }) {
   return (
     <div className="header">
       <span className="header__title">Users</span>
-      <AddButton />
+      {content}
     </div>
   );
 }
