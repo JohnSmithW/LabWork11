@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import addUser from '../../actions/addUser';
-import editUser from '../../actions/editUser';
+import { addUser, editUser } from '../../actions/user';
 
 function AppendUserButton({ name, email, rights, status, onClick, dispatch, edit, id }) {
   return (
@@ -18,7 +17,7 @@ function AppendUserButton({ name, email, rights, status, onClick, dispatch, edit
         }
       }}
       className="add-button add-button_modal">
-      <span className="add-button__text">Add user</span>
+      <span className="add-button__text">{edit ? 'Save' : 'Add user'}</span>
     </button>
   );
 }

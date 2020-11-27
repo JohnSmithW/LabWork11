@@ -1,11 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './UserListItem.scss';
-import getUser from '../../actions/getUser';
+import { getUser } from '../../actions/user';
 
-function User({ id, name, email, rights, status, onDoubleClick, dispatch }) {
+function User({ id, name, email, rights, status, onClick, onDoubleClick, dispatch }) {
   return (
     <div
+      onClick={() => {
+        onClick();
+        dispatch(getUser(id));
+      }}
       onDoubleClick={() => {
         onDoubleClick();
         dispatch(getUser(id));

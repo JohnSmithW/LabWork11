@@ -11,7 +11,7 @@ function mapStateToProps(state) {
   };
 }
 
-function UsersList({ users, onDoubleClick }) {
+function UsersList({ users, onClick, onDoubleClick }) {
   return (
     <div className="users-list">
       <div className="title-block">
@@ -31,6 +31,9 @@ function UsersList({ users, onDoubleClick }) {
               rights={user.rights}
               status={user.status}
               id={user.id}
+              onClick={() => {
+                onClick(user.id);
+              }}
               onDoubleClick={() => {
                 onDoubleClick();
               }}

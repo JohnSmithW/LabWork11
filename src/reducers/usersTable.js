@@ -1,7 +1,7 @@
 export default function usersTable(
   state = {
     users: [],
-    selectedUser: {},
+    selectedUser: { id: 1, name: '1', email: '1', rights: 'user', status: 'active' },
   },
   action
 ) {
@@ -32,6 +32,11 @@ export default function usersTable(
       };
       return { ...state, users: [...newUsers] };
 
+    case 'REMOVE_USER':
+      let newUsers2 = state.users;
+      const updatedState = newUsers2.splice(1, action.id);
+
+      return { ...state, users: updatedState };
     default:
       return state;
   }
