@@ -5,13 +5,18 @@ import Header from '../Header/Header';
 import UsersList from '../UsersList/UsersList';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import AddButton from '../AddButton/AddButton';
-import { removeUser } from '../../actions/user';
-import store from '../../store';
+import getUsers from '../../selectors/getUsers';
 
-function UsersTable({ dispatch }) {
+function mapStateToProps(state) {
+  return {
+    users: getUsers(state),
+  };
+}
+
+function UsersTable({ users }) {
   const [isModalOpen, setModal] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [remove, setRemove] = useState({ id: null, status: false });
+  const [remove, setRemove] = useState({ status: false });
   return (
     <div className="usersTable">
       <ModalWindow
@@ -30,16 +35,19 @@ function UsersTable({ dispatch }) {
         content={
           <AddButton
             onClick={() => {
-              remove.status ? dispatch(removeUser(remove.id)) : setModal(true);
+              remove.status && users.length > 0 ? null : setModal(true);
+              if (remove.status) {
+                setRemove(false);
+              }
             }}
             remove={remove.status}
+            users={users}
           />
         }
       />
       <UsersList
-        onClick={(id) => {
-          setRemove({ id: id, status: !remove.status });
-          console.log(remove);
+        onClick={() => {
+          setRemove({ status: !remove.status });
         }}
         onDoubleClick={() => {
           setModal(true);
@@ -50,4 +58,4 @@ function UsersTable({ dispatch }) {
   );
 }
 
-export default connect(null, null)(UsersTable);
+export default connect(mapStateToProps, null)(UsersTable);

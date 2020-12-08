@@ -20,9 +20,6 @@ export function getUser(id) {
   };
 }
 
-export function removeUser(id) {
-  return {
-    type: 'REMOVE_USER',
-    id: id,
-  };
-}
+export const removeUser = {
+  type: 'REMOVE_USER',
+};

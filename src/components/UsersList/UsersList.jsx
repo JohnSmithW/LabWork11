@@ -11,7 +11,7 @@ function mapStateToProps(state) {
   };
 }
 
-function UsersList({ users, onClick, onDoubleClick }) {
+function UsersList({ users, onClick, onDoubleClick, dispatch }) {
   return (
     <div className="users-list">
       <div className="title-block">
@@ -22,7 +22,7 @@ function UsersList({ users, onClick, onDoubleClick }) {
       </div>
 
       <div className="users custom-scroll">
-        {users.map((user) => {
+        {users.map((user, index) => {
           return (
             <UserListItem
               key={user.id}
@@ -30,9 +30,10 @@ function UsersList({ users, onClick, onDoubleClick }) {
               email={user.email}
               rights={user.rights}
               status={user.status}
-              id={user.id}
+              id={index}
               onClick={() => {
-                onClick(user.id);
+                onClick();
+                // dispatch(removeUser(users.id));
               }}
               onDoubleClick={() => {
                 onDoubleClick();

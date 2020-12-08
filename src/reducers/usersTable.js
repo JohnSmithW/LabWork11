@@ -1,7 +1,7 @@
 export default function usersTable(
   state = {
     users: [],
-    selectedUser: { id: 1, name: '1', email: '1', rights: 'user', status: 'active' },
+    selectedUser: { id: 0, name: '1', email: '1', rights: 'user', status: 'active' },
   },
   action
 ) {
@@ -19,7 +19,7 @@ export default function usersTable(
       return { ...state, users: [...newState] };
 
     case 'GET_USER':
-      return { ...state, selectedUser: state.users[action.id - 1] };
+      return { ...state, selectedUser: state.users[action.id] };
 
     case 'EDIT_USER':
       const newUsers = state.users;
@@ -33,10 +33,16 @@ export default function usersTable(
       return { ...state, users: [...newUsers] };
 
     case 'REMOVE_USER':
-      let newUsers2 = state.users;
-      const updatedState = newUsers2.splice(1, action.id);
+      // refreshedUsers.users.splice(state.selectedUser.id - 1, 1);
 
-      return { ...state, users: updatedState };
+      const users = state.users.filter((item) => {
+        return item.id !== state.selectedUser.id && item;
+      });
+
+      return {
+        ...state,
+        users,
+      };
     default:
       return state;
   }
