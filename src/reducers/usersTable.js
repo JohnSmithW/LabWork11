@@ -9,7 +9,7 @@ export default function usersTable(
     case 'ADD_USER':
       const newState = state.users;
       newState.push({
-        id: state.users.length + 1,
+        id: state.users.length,
         name: action.user.name,
         email: action.user.email,
         rights: action.user.rights,

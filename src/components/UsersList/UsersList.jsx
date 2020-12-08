@@ -33,7 +33,6 @@ function UsersList({ users, onClick, onDoubleClick, dispatch }) {
               id={index}
               onClick={() => {
                 onClick();
-                // dispatch(removeUser(users.id));
               }}
               onDoubleClick={() => {
                 onDoubleClick();
