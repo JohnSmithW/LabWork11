@@ -9,9 +9,7 @@ import App from './App';
 // document.body.appendChild(root);
 
 ReactDom.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+    <App />,
   document.querySelector('#root')
 );
 
