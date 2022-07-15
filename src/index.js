@@ -9,7 +9,7 @@ import App from './App';
 // document.body.appendChild(root);
 
 ReactDom.render(
-    <App />,
+    App,
   document.querySelector('#root')
 );
 
